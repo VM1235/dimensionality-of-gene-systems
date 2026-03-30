@@ -1,16 +1,11 @@
-# Transcriptomic_Analysis — Figure 1A/1B reproduction (Hari et al., iScience 2025)
+# Figure 1A/1B reproduction (https://doi.org/10.1016/j.isci.2024.111730)
 
-This folder reproduces **Figure 1A and 1B (panels i–iii)** from:
+This folder reproduces **Figure 1A and 1B (panels i–iii)** from: *“Low dimensionality of phenotypic space as an emergent property of coordinated teams in biological regulatory networks”*, https://doi.org/10.1016/j.isci.2024.111730
 
-- Hari et al., iScience (2025), *“Low dimensionality of phenotypic space as an emergent property of coordinated teams in biological regulatory networks”*
-
-It generates, for two binary phenotype axes:
 
 - **(i)** gene–gene Pearson correlation heatmap (signature genes only)
 - **(ii)** PC1 loadings bar plot
 - **(iii)** PC1 vs PC2 scatter of cell lines, colored by a phenotype score
-
-Outputs are saved as a single PNG.
 
 ---
 
@@ -27,37 +22,6 @@ Outputs are saved as a single PNG.
 ## What is NOT there:
 - **`OmicsExpressionTPMLogp1HumanProteinCodingGenes.csv`**: DepMap expression matrix (TPM log1p; protein-coding genes).
 - **`virtual environment codes`**: python environment to ensure all libraries are available.
-## Data → panel definitions (high level)
-
-The code links files by **`ModelID`**:
-
-- `Model.csv` provides annotations (e.g., `DepmapModelType`, `OncotreePrimaryDisease`).
-- `OmicsExpression…csv` provides expression rows keyed by `ModelID` and gene columns named like `SYMBOL (EntrezID)`.
-
-Panel subsets:
-
-- **Figure 1A (SCLC)**: models where `DepmapModelType == "SCLC"`.
-- **Figure 1B (EMT; non-SCLC cancers)**: models where:
-  - `OncotreePrimaryDisease != "Non-Cancerous"` and
-  - `DepmapModelType != "SCLC"`.
-
-Expression filtering:
-
-- Keeps only rows where `IsDefaultEntryForModel == "Yes"` (one profile per model).
-
-Phenotype score (per cell line):
-
-- `score = mean(team1 genes) − mean(team2 genes)`
-
-PCA preprocessing:
-
-- Uses **center-only** preprocessing (subtract per-gene mean; no variance scaling) to align with typical **R `prcomp` default** behavior.
-
-Gene symbol compatibility:
-
-- The script includes a small alias map for HGNC symbol updates:
-  - `CYR61 → CCN1`
-  - `FAM57B → CFAP97`
 
 ---
 
@@ -94,6 +58,40 @@ python reproduce_fig1AB.py
 Expected output:
 
 - `figure1AB_reproduction_final.png`
+
+---
+
+## Overall Workflow
+
+The code links files by **`ModelID`**:
+
+- `Model.csv` provides annotations (e.g., `DepmapModelType`, `OncotreePrimaryDisease`).
+- `OmicsExpression…csv` provides expression rows keyed by `ModelID` and gene columns named like `SYMBOL (EntrezID)`.
+
+Panel subsets:
+
+- **Figure 1A (SCLC)**: models where `DepmapModelType == "SCLC"`.
+- **Figure 1B (EMT; non-SCLC cancers)**: models where:
+  - `OncotreePrimaryDisease != "Non-Cancerous"` and
+  - `DepmapModelType != "SCLC"`.
+
+Expression filtering:
+
+- Keeps only rows where `IsDefaultEntryForModel == "Yes"` (one profile per model).
+
+Phenotype score (per cell line):
+
+- `score = mean(team1 genes) − mean(team2 genes)`
+
+PCA preprocessing:
+
+- Uses **center-only** preprocessing (subtract per-gene mean; no variance scaling) to align with typical **R `prcomp` default** behavior.
+
+Gene symbol compatibility:
+
+- The script includes a small alias map for HGNC symbol updates:
+  - `CYR61 → CCN1`
+  - `FAM57B → CFAP97`
 
 ---
 
