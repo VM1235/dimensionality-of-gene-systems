@@ -21,12 +21,12 @@ Outputs are saved as a single PNG.
   - `GeneSetID == SCLC` has **50 genes** in the order: first 25 **NE**, last 25 **non-NE**.
   - `GeneSetID == EMT` has **22 genes** (split into 11 epithelial + 11 mesenchymal by the script).
 - **`Model.csv`**: DepMap model metadata used to filter cell lines for panel A/B.
-- **`OmicsExpressionTPMLogp1HumanProteinCodingGenes.csv`**: DepMap expression matrix (TPM log1p; protein-coding genes).
 - **`requirements.txt`**: Python dependencies.
-- **`.mplconfig/`**: local Matplotlib config/cache directory (helps avoid permission issues when Matplotlib builds font caches).
 
 ---
-
+## What is NOT there:
+- **`OmicsExpressionTPMLogp1HumanProteinCodingGenes.csv`**: DepMap expression matrix (TPM log1p; protein-coding genes).
+- **`virtual environment codes`**: python environment to ensure all libraries are available.
 ## Data → panel definitions (high level)
 
 The code links files by **`ModelID`**:
