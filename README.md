@@ -12,7 +12,7 @@ export MPLBACKEND=Agg
 ```
 
 ## Branches
-- `plots-fig1`: Hari et al. (iScience 2025) Fig 1A/1B (`reproduce_fig1AB.py` → `figure1AB_reproduction_final.png`)
+- `transciptomic-analysis-plots-figure1`: Hari et al. (iScience 2025) Fig 1A/1B (`reproduce_fig1AB.py` → `figure1AB_reproduction_final.png`)
 - `low-ID-with-dev`: incoming replication for “ID paper” (to be documented in the branch)
 
 ## Caveats
