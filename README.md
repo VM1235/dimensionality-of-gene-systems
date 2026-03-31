@@ -124,14 +124,3 @@ Both show: **Differentiation = Dimensionality Reduction**
 
 ---
 
-
-## Key Findings
-
-✅ **Intrinsic dimension decreases with differentiation** (both zebrafish and mouse)
-
-✅ **Principle is evolutionarily conserved** (works across species)
-
-✅ **Method is robust** (consistent across 3 independent subsamples)
-
-✅ **Quantitative measure of development** (provides numerical metric for developmental stage)
-
