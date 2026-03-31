@@ -83,24 +83,6 @@ Plots are generated inline in the notebook showing ID-score trends during develo
 
 ---
 
-## Key Concepts
-
-### Intrinsic Dimension (ID)
-The minimum number of independent variables needed to describe your data.
-
-- **High ID**: Many genes expressed → pluripotent/undifferentiated state
-- **Low ID**: Few genes expressed → specialized/differentiated state
-
-### 2-NN Algorithm
-A robust method from Facco et al. (2015) that estimates ID by analyzing nearest-neighbor distances in high-dimensional space. No parameters to tune—it just works!
-
-### Subsampling Strategy
-- Takes 75% of cells from the smallest developmental stage
-- Applies equally to all stages for fair comparison
-- Runs 3 times with different random seeds for robustness
-- Calculates mean and standard deviation from 3 runs
-
----
 
 ## Results Summary
 
@@ -132,30 +114,6 @@ Both show: **Differentiation = Dimensionality Reduction**
 
 ---
 
-## Understanding the Notebook
-
-### Cell Anatomy
-Each major section follows this pattern:
-
-```python
-# 1. Data Loading
-adata = sc.read_h5ad('data.h5ad')
-mtx = adata.X              # Expression matrix
-df = adata.obs             # Cell metadata
-genes = adata.var_names    # Gene names
-
-# 2. Stage Analysis
-times_dict = dict(Counter(df.stage.values))
-n_subsampled_cells = int(min(times_dict.values()) * 0.75)
-
-# 3. ID Calculation
-results_dict = IDmeter.ID(dataset_name, labeling, labels, 
-                         df, mtx, genes, 
-                         n_subsamplings=3, verbose=False)
-
-# 4. Plotting
-Plot_figures.plot_temporal_trend(results_dict, dataset_name, xlabel)
-```
 
 ### What Each Step Does
 
@@ -166,16 +124,6 @@ Plot_figures.plot_temporal_trend(results_dict, dataset_name, xlabel)
 
 ---
 
-## For More Details
-
-📖 **Read `EXPLANATION.md`** for:
-- Deep dive into the 2-NN algorithm
-- Step-by-step code walkthroughs
-- Mathematical explanations
-- Biological interpretation
-- Statistical robustness discussion
-
----
 
 ## Key Findings
 
@@ -187,60 +135,3 @@ Plot_figures.plot_temporal_trend(results_dict, dataset_name, xlabel)
 
 ✅ **Quantitative measure of development** (provides numerical metric for developmental stage)
 
----
-
-## Citation
-
-If using this analysis, cite the original paper:
-> *"The intrinsic dimension of gene expression during cell differentiation"* 
-> Authors and year: [To be added based on your paper]
-
-Original datasets:
-- Zebrafish: Wagner et al., *Nature* (2018) - GSE112294
-- Mouse: Pijuan-Sala et al., *Nature* (2019) - E-MTAB-6967
-
----
-
-## Requirements
-
-- Python 3.10+
-- Virtual environment with packages in `requirements.txt`
-- Jupyter Notebook or VS Code with Jupyter extension
-- ~2GB disk space for data files
-- ~4GB RAM for analysis
-
----
-
-## Troubleshooting
-
-### Issue: ImportError for custom modules
-**Solution**: Make sure you're running from the correct directory and `My_libs/` folder exists
-
-### Issue: Data file not found
-**Solution**: Download preprocessed h5ad files from [Google Drive link](https://drive.google.com/drive/folders/1bm69GFaq8lcXRjAtxbgQIi2j_H_cX6bi)
-
-### Issue: Kernel hangs during imports
-**Solution**: Restart the Jupyter kernel (Kernel → Restart in menu)
-
-### Issue: Memory error
-**Solution**: Close other applications or increase available RAM
-
----
-
-## Contact & Support
-
-For questions about the original research:
-- Check the paper's supplementary materials
-- Review the detailed `EXPLANATION.md` file
-- Consult the original GitHub repository
-
----
-
-## License
-
-See the original paper and repository for license information.
-
----
-
-**Last Updated**: March 31, 2026  
-**Status**: ✅ Analysis complete - Figures 1A and 1B reproduced successfully
