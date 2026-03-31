@@ -1,0 +1,56 @@
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python Cache (but NOT My_libs/ folder)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data files (large - should download from Drive)
+*.h5ad
+*.h5
+*.csv
+*.xlsx
+
+# Output
+Measures/
+*.png
+*.pdf
+
+# Documentation (local)
+EXPLANATION.md
+
+# OS
+.DS_Store
+Thumbs.db
